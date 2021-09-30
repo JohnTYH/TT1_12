@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageWrapper } from '../layout';
 // import ImageCarousel from "../components/ImageCarousel"
 // import { Container, Row, Col } from 'react-bootstrap'
@@ -7,7 +7,7 @@ import {
   CardContainer
 } from "./styled-components";
 
-
+// useState = 
 
 export const HomePage = () => {
 
