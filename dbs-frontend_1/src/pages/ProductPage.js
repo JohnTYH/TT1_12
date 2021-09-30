@@ -17,41 +17,51 @@ const qtyAvail = styled.span`
     color: #DC143C;
 `
 
-export const ProductPage = () => {
-    const [qty, setQty] = useState(0);
+// pass in product id, current product qty into props
+export const ProductPage = (props) => {
+    const context = useContext(GlobalContext);
+    const [cart_qty, setQty] = useState(0);
+
+    const handleCart = () => {
+    const currentItem = context.cart.find(item => item.id === prods[this.props.id].id);
+        if (!currentItem) {
+            context.setCart([...context.cart, {id: prods[this.props.id].id, price: prods[this.props.id].price, cart_qty: prods[this.props.id].qty, image: prods[this.props.id].image}]);
+        } else {
+            context.setCart(context.cart.map(item => item.id === prods[this.props.id].id ? {...item, cart_qty: item.qty += prods[this.props.id].qty} : {...item}));
+        } 
+    }
+
+
     return(
         <PageWrapper>
             <div>
-                <Card title={prods[0].title}>
+                <Card title={prods[this.props.id].title}>
                     <p>
-                        <Image className='image' src={prods[0].image} />
+                        <Image className='image' src={prods[this.props.id].image} />
                     </p>
                     <Price>
-                        S${prods[0].price}
+                        S${prods[this.props.id].price}
                     </Price>
                     <p>
-                        {prods[0].description}
+                        {prods[this.props.id].description}
                     </p>
                     
                 </Card>
             </div>
             <div>
-            <Button type="primary">Add to Cart</Button>
+            <Button type="primary" onClick={handleCart}>Add to Cart</Button>
             </div>
             <Button type="primary" onClick={() => {
-                if(qty < 50){setQty(qty+1)}
+                if(cart_qty < this.props.qty){setQty(cart_qty+1)}
                 }}>
                 +
             </Button>
-            <Button type="primary" onClick={() => {if(qty > 0) {setQty(qty-1)}}}>-</Button>
-            <span>
-                Quantity Available: {50}
-            </ span>
+            <Button type="primary" onClick={() => {if(cart_qty > 0) {setQty(cart_qty-1)}}}>-</Button>
             <div>
-                <p>Quantity: {qty}</p>
+                <p>Quantity: {cart_qty}</p>
             </div>
             <div>
-                <p>Total Amount: S${(qty * prods[0].price).toFixed(2)}</p>
+                <p>Total Amount: S${(cart_qty * prods[this.props.id].price).toFixed(2)}</p>
             </div>
         </PageWrapper>
         
