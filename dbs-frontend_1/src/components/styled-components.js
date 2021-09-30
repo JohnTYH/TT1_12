@@ -21,7 +21,6 @@ export const CardHeader = styled.header`
   padding-bottom: 32px;
 `;
 
-
 export const CardHeading = styled.h1`
   height: 100px;
   font-family: 'typeface-roboto';
