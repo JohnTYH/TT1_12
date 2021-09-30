@@ -7,7 +7,7 @@ import {
   CardContainer
 } from "./styled-components";
 
-useState = 
+// useState = 
 
 export const HomePage = () => {
 
