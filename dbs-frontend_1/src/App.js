@@ -4,8 +4,9 @@ import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { GlobalContext } from './context';
-import { CheckoutPage, LoginPage } from './pages';
-import { HomePage } from './pages/HomePage';
+import { LoginPage } from './pages';
+import { HomePage } from './pages/HomePage'
+import { ProductPage } from './pages/ProductPage'
 
 function App() {
   const [cart, setCart] = useState({});
@@ -36,7 +37,7 @@ function App() {
           <Switch>
             <Route path={'/'} exact={true} render={() => <LoginPage />} />
             <Route path={'/home'} exact={true} render={() => <HomePage />} />
-            <Route path={'/checkout'} exact={true} render={() => <CheckoutPage />} />
+            <Route path={'/product'} exact={true} render={() => <ProductPage />} />
           </Switch>
         </BrowserRouter>}
       </GlobalContext.Provider>

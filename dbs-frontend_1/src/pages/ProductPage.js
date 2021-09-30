@@ -1,9 +1,9 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, Card} from 'antd';
 import { Route, Switch } from 'react-router';
 import styled from 'styled-components';
-
-const [itemID, setItem] = useState();
+import { prods } from '../static';
+import { PageWrapper } from '../layout';
 
 const Image = styled.img`
     width: 100px;
@@ -11,25 +11,28 @@ const Image = styled.img`
 
 
 export const ProductPage = () => {
-
     return(
-        <div>
-            <ul>
-                <li>
-                   data[i].title
-                </li>
-                <li>
-                    <Image className='image' src={data[i].image} />
-                </li>
-                <li>
-                    data[i].price
-                </li>
-                <li>
-                    data[i].description
-                </li>
-                
-            </ul>
-        </div>
+        <PageWrapper>
+            <div>
+                <Card title="Card title" style={{ width: 300 }}>
+                    <p>
+                    {prods[0].title}
+                    </p>
+                    <p>
+                        <Image className='image' src={prods[0].image} />
+                    </p>
+                    <p>
+                        Price: {prods[0].price}
+                    </p>
+                    <p>
+                        Description: {prods[0].description}
+                    </p>
+                    
+                </Card>
+            </div>
+
+            <Button type="primary">Add to Cart</Button>
+        </PageWrapper>
         
     )
 };
