@@ -3,7 +3,7 @@ from flask import jsonify
 from routes import app
 from routes import db
 
-class product(db.Model):
+class Product(db.Model):
     __tablename__ = 'product'
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
@@ -14,8 +14,8 @@ class product(db.Model):
     image = db.Column(db.Text(), nullable=False)
     qty = db.Column(db.Integer(), nullable=False)
 
-    def __init__(self, id, title, price, description, category_id, image, qty):
-        self.id = None
+    def __init__(self, title, price, description, category_id, image, qty, id=None):
+        self.id = id
         self.title = title
         self.price = price
         self.description = description
@@ -28,4 +28,8 @@ class product(db.Model):
 
 @app.route("/products")
 def get_all_products():
-    return jsonify([c.json() for c in product.query.all()]) 
+    return jsonify([c.json() for c in Product.query.all()]) 
+
+@app.route("/products/<int:product_id>")
+def get_product(product_id):
+    return jsonify(Product.query.filter_by(id=product_id).first().json())

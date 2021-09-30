@@ -2,7 +2,7 @@ from flask import jsonify
 from routes import app
 from routes import db
 
-class category(db.Model):
+class Category(db.Model):
     __tablename__ = 'category'
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
@@ -21,4 +21,4 @@ class category(db.Model):
 
 @app.route("/categories")
 def get_all_categories():
-    return jsonify([c.json() for c in category.query.all()]) 
+    return jsonify([c.json() for c in Category.query.all()]) 

@@ -2,7 +2,7 @@ from flask import jsonify, request
 from routes import app
 from routes import db
 
-class customer(db.Model):
+class Customer(db.Model):
     __tablename__ = 'customer'
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
@@ -31,10 +31,10 @@ def login():
     data = request.get_json()
     username = data["username"]
     password = data["password"]
-    if (customer.query.filter_by(username=username).first()) == None:
+    if (Customer.query.filter_by(username=username).first()) == None:
         return jsonify({"message":"User with username '{}' does not exist.".format(username)}), 400
     
-    customer_db = customer.query.filter_by(username=username).first()
+    customer_db = Customer.query.filter_by(username=username).first()
     if customer_db.password == password:
         return customer_db.json()
 

@@ -1,10 +1,13 @@
 from flask import json, jsonify
 from routes import app
 from routes import db
-from routes.category import category
-from routes.product import product
+from routes.category import Category
+from routes.product import Product, get_product
 from flask import request, jsonify
 from sqlalchemy.sql import func
+import json
+
+import requests
 
 class Order_Item(db.Model):
     __tablename__ = 'order_item'
@@ -79,12 +82,25 @@ def cart_checkout():
     order_id = order.id
 
     products = data["products"]
-    print(products)
-    for product in products:
-        product = Order_Item(order_id=order_id, **product)
+    for item in products:
+        order_item = Order_Item(order_id=order_id, **item)
 
         try:
-            db.session.add(product)
+            db.session.add(order_item)
+            db.session.commit()
+        except Exception as e:
+            print(e)
+            return jsonify({f"message": "An error {error} occured creating the order item."}), 500
+
+        # Reduce quantity
+        product_id = item["product_id"]
+        product = Product.query.filter_by(id=product_id).first()
+
+        if item["product_qty"] > product.qty:
+            return jsonify({f"message": "Quantity orderd is more than product's quantity!}."}), 400
+
+        product.qty -= item["product_qty"]
+        try:
             db.session.commit()
         except Exception as e:
             print(e)
