@@ -44,10 +44,9 @@ class Order(db.Model):
 def add_order():
     data = request.get_json()
 
-    # For order
-    customer_id = data["customer_id"]
-    status = data["status"]
-    # created_at
+    # # For order
+    # customer_id = data["customer_id"]
+    # status = data["status"]
 
     # Add order to db
     order = Order(**data)
@@ -67,7 +66,6 @@ def cart_checkout():
     # For order
     customer_id = data["customer_id"]
     status = data["status"]
-    # created_at
 
     # Add order to db
     order = Order(customer_id=customer_id, status=status)
@@ -94,6 +92,7 @@ def cart_checkout():
 
     return jsonify(order.json())
 
-@app.route("/orderitems")
-def get_all_order_items():
-    return jsonify([c.json() for c in Order_Item.query.all()]) 
+@app.route("/orderitems/<int:order_id>")
+def get_all_order_items(order_id):
+    return jsonify([c.json() for c in Order_Item.query.filter_by(order_id=order_id).all()]) 
+
