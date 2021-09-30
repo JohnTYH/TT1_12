@@ -1,11 +1,12 @@
 import 'antd/dist/antd.css';
 import { useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { GlobalContext } from './context';
-import { CheckoutPage, LoginPage } from './pages';
+import { CheckoutPage, LoginPage, NotFoundPage } from './pages';
 import { HomePage } from './pages/HomePage';
+import { prods } from './static';
 
 function App() {
   const [cart, setCart] = useState({});
@@ -21,6 +22,7 @@ function App() {
     if (!!token) {
       setToken({ token });
     }
+    setCart(prods);
     setMounted(true);
   }
 
@@ -37,6 +39,10 @@ function App() {
             <Route path={'/'} exact={true} render={() => <LoginPage />} />
             <Route path={'/home'} exact={true} render={() => <HomePage />} />
             <Route path={'/checkout'} exact={true} render={() => <CheckoutPage />} />
+            <Route path={'/not-found'} exact={true} render={() => <NotFoundPage />} />
+            <Route
+              render={() => <Redirect key={'NOT_FOUND'} to={{ pathname: '/not-found' }} />}
+            />
           </Switch>
         </BrowserRouter>}
       </GlobalContext.Provider>
