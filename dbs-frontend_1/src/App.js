@@ -4,7 +4,7 @@ import { Redirect, Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { GlobalContext } from './context';
-import { CheckoutPage, LoginPage, NotFoundPage } from './pages';
+import { CheckoutPage, LoginPage, NotFoundPage, ProductPage } from './pages';
 import { HomePage } from './pages/HomePage';
 import { prods } from './static';
 
@@ -40,6 +40,7 @@ function App() {
             <Route path={'/home'} exact={true} render={() => <HomePage />} />
             <Route path={'/checkout'} exact={true} render={() => <CheckoutPage />} />
             <Route path={'/not-found'} exact={true} render={() => <NotFoundPage />} />
+            <Route path={'/product'} exact={true} render={() => <ProductPage />} />
             <Route
               render={() => <Redirect key={'NOT_FOUND'} to={{ pathname: '/not-found' }} />}
             />
