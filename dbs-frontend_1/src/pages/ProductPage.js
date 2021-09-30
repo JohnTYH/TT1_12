@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router';
 import styled from 'styled-components';
 import { prods } from '../static';
 import { PageWrapper } from '../layout';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 const Image = styled.img`
     width: 12em;
@@ -16,7 +16,6 @@ const Price = styled.p`
 const qtyAvail = styled.span`
     color: #DC143C;
 `
-
 // pass in product id, current product qty into props
 export const ProductPage = (props) => {
     const context = useContext(GlobalContext);
