@@ -60,7 +60,7 @@ export default function Item(props) {
                 <CardButtonDiv>
     
                     <CardFieldset>
-                        <CardButton type="button">Check Out</CardButton>
+                        <CardButton type="button">Find Out More</CardButton>
                     </CardFieldset>             
                 </CardButtonDiv>         
         </CardWrapper>
