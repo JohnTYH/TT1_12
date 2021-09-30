@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage';
 
 function App() {
   const [cart, setCart] = useState({});
+  const [user, setUser] = useState({});
   const [token, setToken] = useState();
   const [mounted, setMounted] = useState(false);
 
@@ -26,7 +27,8 @@ function App() {
 
   const contextValue = {
     cart, setCart: cart => setCart(cart),
-    token, setToken: token => setToken(token)
+    token, setToken: token => setToken(token),
+    user, setUser: user => setUser(user)
   };
 
   return (
