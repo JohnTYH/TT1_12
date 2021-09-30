@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiInstance = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'http://localhost:5000',
   headers: { 'Content-Type': 'application/json' }
 });
 
@@ -25,6 +25,7 @@ export class ApiService {
   async post(url, req) {
     try {
       const { data } = await apiInstance.post(url, req);
+      console.log(data)
       return data;
     } catch (err) {
       throw err.response.data.error;

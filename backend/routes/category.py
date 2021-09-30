@@ -2,7 +2,7 @@ from flask import jsonify
 from routes import app
 from routes import db
 
-class category(db.Model):
+class Category(db.Model):
     __tablename__ = 'category'
 
     id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
@@ -11,7 +11,7 @@ class category(db.Model):
     image = db.Column(db.Text(), nullable=False)
 
     def __init__(self, id, name, description, image):
-        self.id = id
+        self.id = None
         self.name = name
         self.description = description
         self.image = image
@@ -20,6 +20,5 @@ class category(db.Model):
         return {"id": self.id, "name":self.name, "description": self.description, "image": self.image}
 
 @app.route("/categories")
-def get_all():
-    #check if its only called by matching service then can call this service
-    return jsonify([c.json() for c in category.query.all()]) 
+def get_all_categories():
+    return jsonify([c.json() for c in Category.query.all()]) 
