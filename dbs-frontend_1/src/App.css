@@ -7,3 +7,11 @@
   padding: 24px;
   min-height: 100%;
 }
+
+.img {
+  height:100px;
+  width:100px;
+  display:block;
+  margin-left: auto;
+  margin-right:auto;
+}
