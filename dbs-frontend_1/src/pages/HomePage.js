@@ -13,7 +13,7 @@ export const HomePage = () => {
   const [productList, setProductList] = useState(products)
   // const productList = products;
   
-  fetch("localhost:5000/products")
+  fetch("http://localhost:5000/products")
   .then(response => response.json())
   .then(result => setProductList(result))
   .catch(error => console.log('error', error));
