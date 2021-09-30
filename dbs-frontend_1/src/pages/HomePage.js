@@ -1,5 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageWrapper } from '../layout';
+// import ImageCarousel from "../components/ImageCarousel"
+// import { Container, Row, Col } from 'react-bootstrap'
+import Item from '../components/item'
+import {
+  CardContainer
+} from "./styled-components";
+
+// useState = 
 
 export const HomePage = () => {
 
@@ -13,7 +21,10 @@ export const HomePage = () => {
 
   return (
     <PageWrapper>
-      <div>Home Page</div>
+      <CardContainer>
+        <Item/>
+        <Item/>
+      </CardContainer>
     </PageWrapper>
   );
 };
