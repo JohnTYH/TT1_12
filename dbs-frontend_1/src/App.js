@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { GlobalContext } from './context';
-import { LoginPage } from './pages';
+import { CheckoutPage, LoginPage } from './pages';
 import { HomePage } from './pages/HomePage';
 
 function App() {
@@ -36,6 +36,7 @@ function App() {
           <Switch>
             <Route path={'/'} exact={true} render={() => <LoginPage />} />
             <Route path={'/home'} exact={true} render={() => <HomePage />} />
+            <Route path={'/checkout'} exact={true} render={() => <CheckoutPage />} />
           </Switch>
         </BrowserRouter>}
       </GlobalContext.Provider>
