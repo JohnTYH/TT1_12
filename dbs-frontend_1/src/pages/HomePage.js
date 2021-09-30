@@ -6,10 +6,11 @@ import Item from '../components/item'
 import {
   CardContainer
 } from "./styled-components";
+import products from '../data/products.json'
 
-// useState = 
 
 export const HomePage = () => {
+  const productList = products;
 
   useEffect(() => {
     onInit();
@@ -22,8 +23,9 @@ export const HomePage = () => {
   return (
     <PageWrapper>
       <CardContainer>
-        <Item/>
-        <Item/>
+        {productList.map((s) => (
+          <Item item={s} >{s}</Item>
+          ))}
       </CardContainer>
     </PageWrapper>
   );
