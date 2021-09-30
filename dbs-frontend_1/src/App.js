@@ -5,10 +5,11 @@ import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { GlobalContext } from './context';
 import { LoginPage } from './pages';
+import { CheckoutPage } from './pages/CheckoutPage';
 import { HomePage } from './pages/HomePage';
 
 function App() {
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState([]);
   const [user, setUser] = useState({});
   const [token, setToken] = useState();
   const [mounted, setMounted] = useState(false);
@@ -38,6 +39,7 @@ function App() {
           <Switch>
             <Route path={'/'} exact={true} render={() => <LoginPage />} />
             <Route path={'/home'} exact={true} render={() => <HomePage />} />
+            <Route path={'/checkout'} exact={true} render={() => <CheckoutPage />} />
           </Switch>
         </BrowserRouter>}
       </GlobalContext.Provider>

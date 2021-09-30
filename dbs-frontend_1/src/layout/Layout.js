@@ -1,4 +1,4 @@
-import { HomeOutlined, LogoutOutlined } from '@ant-design/icons';
+import { HomeOutlined, LogoutOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React from 'react';
 import { useHistory } from 'react-router';
@@ -22,7 +22,12 @@ export const PageWrapper = ({ children }) => {
           history.push('/');
           sessionStorage.removeItem("token");
         }
-      }
+      },
+      {
+        icon: <ShoppingCartOutlined />,
+        name: 'Cart',
+        onClick: () => history.push('/checkout')
+      },
     ];
 
   return (
