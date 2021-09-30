@@ -12,8 +12,11 @@ export const LoginPage = () => {
   const onFinish = async (values) => {
     try {
       const res = await authService.login({ username: values.username, password: values.password });
-      context.setToken({ token: res.token });
-      sessionStorage.setItem("token", JSON.stringify(res.token));
+      console.log(res)
+      // context.setToken({ token: res.token });
+      context.setUser({user: res})
+      console.log(context.user)
+      // sessionStorage.setItem("token", JSON.stringify(res.token));
       history.push('/home');
     } catch (err) {
       console.log(err);
