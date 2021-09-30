@@ -7,6 +7,7 @@ import { PageWrapper } from '../layout';
 export const CheckoutPage = () => {
   const context = useContext(GlobalContext);
   const [mounted, setMounted] = useState(false);
+  console.log(context)
 
   useEffect(() => {
     onInit();
@@ -18,13 +19,13 @@ export const CheckoutPage = () => {
 
   const onIncrement = id => {
     context.setCart(context.cart.map(item => item.id === id ? 
-      {...item, qty: item.qty + 1} : {...item}
+      {...item, cart_qty: item.cart_qty + 1} : {...item}
       ));
   }
 
   const onMinus = id => {
     context.setCart(context.cart.map(item => item.id === id ? 
-      {...item, qty: item.qty - 1} : {...item}
+      {...item, cart_qty: item.cart_qty - 1} : {...item}
       ));
   }
   
@@ -60,9 +61,9 @@ export const CheckoutPage = () => {
                 <List.Item.Meta
                   avatar={<Avatar src={item.image} />}
                   title={<span>{item.title}</span>}
-                  description={`Price $${item.price}, Quantity: ${item.qty}`}
+                  description={`Price $${item.price}, Quantity: ${item.cart_qty}`}
                 />
-                <div>{`$${(item.price * item.qty).toFixed(2)}`}</div>
+                <div>{`$${(item.price * item.cart_qty).toFixed(2)}`}</div>
               </List.Item>
             )}
           />
@@ -71,7 +72,7 @@ export const CheckoutPage = () => {
             Checkout
           </Button>
           <div style={{ float: 'right', padding: '12px 0 36px 0', fontWeight: 'bold' }}>
-            Total: ${context.cart.map(item => item.qty * item.price).reduce((a, b) => a + b, 0).toFixed(2)}
+            Total: ${context.cart.map(item => item.cart_qty * item.price).reduce((a, b) => a + b, 0).toFixed(2)}
           </div>
         </>
       }

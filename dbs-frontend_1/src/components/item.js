@@ -33,19 +33,21 @@ export default function Item(props) {
     const [image, setImg] = useState('err');
 
     const [quantity, setQuantity] = useState(-1);
+    const [id, setId] = useState(-1);
 
     useEffect(() => {
         setQuantity(props.item.qty);
         setTitle(props.item.title);
         setDesc(props.item.description);
         setImg(props.item.image);
+        setId(props.item.id);
         console.log(image);
       },)
 
     // const history = useHistory();
 
     return (
-        <CardWrapper onClick={() => history.push(`/products`)}>
+        <CardWrapper onClick={() => history.push(`/product/${id}`)}>
             <CardHeading>{title}</CardHeading>
                 <CardImage> 
                     <Tooltip title={desc}>
