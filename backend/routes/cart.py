@@ -96,3 +96,19 @@ def cart_checkout():
 def get_all_order_items(order_id):
     return jsonify([c.json() for c in Order_Item.query.filter_by(order_id=order_id).all()]) 
 
+@app.route("/orderitems/<int:order_id>/<int:product_id>", methods=['DELETE'])
+def delete_order_items(order_id, product_id):
+    product = Order_Item.query.filter_by(order_id=order_id, product_id=product_id).first()
+
+    if product == None:
+        return jsonify({"message":"Product does not exist."}), 400
+
+    try:
+        db.session.delete(product)
+        db.session.commit()
+    except Exception as e:
+        print(e)
+        return jsonify({f"message": "An error {error} occured creating the order item."}), 500
+
+    return jsonify({"message":"Product deleted"})
+
