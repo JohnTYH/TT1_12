@@ -2,7 +2,6 @@ import React from "react";
 import styled, { css } from "styled-components";
 
 export const CardWrapper = styled.div`
-  min-width: 399px
   overflow: hidden;
   padding: 0 0 32px;
   margin: 48px 10px 10px;
@@ -10,10 +9,7 @@ export const CardWrapper = styled.div`
   font-family: Quicksand, arial, sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15), 0 0px 40px rgba(0, 0, 0, 0.18);
   border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    color: #777;
-  }
+  
 `;
 
 export const CardHeader = styled.header`
@@ -22,27 +18,12 @@ export const CardHeader = styled.header`
 `;
 
 export const CardHeading = styled.h1`
-  height: 100px;
-  font-family: 'typeface-roboto';
-  font-size: 18px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
 `;
 
-export const CardImage = styled.div`
-width: 100px;
-height: 100px;
-margin: auto;
-padding: 10px 0px;
-`;
-
 export const CardBody = styled.div`
-width: 100%;
-height: 350px;
-padding: 0px 30px;
-`;
-
-export const CardButtonDiv = styled.div`
 width: 100%;
 height: 100%;
 padding: 0px 30px;
