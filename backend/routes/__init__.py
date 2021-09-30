@@ -11,6 +11,7 @@ db = SQLAlchemy(app)
 CORS(app)
 
 import routes.category
+import routes.customer
 
 
 

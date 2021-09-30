@@ -11,7 +11,7 @@ class category(db.Model):
     image = db.Column(db.Text(), nullable=False)
 
     def __init__(self, id, name, description, image):
-        self.id = id
+        self.id = None
         self.name = name
         self.description = description
         self.image = image
