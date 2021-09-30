@@ -12,6 +12,8 @@ CORS(app)
 
 import routes.category
 import routes.customer
+import routes.product
+import routes.cart
 
 
 

@@ -21,5 +21,4 @@ class category(db.Model):
 
 @app.route("/categories")
 def get_all_categories():
-    #check if its only called by matching service then can call this service
     return jsonify([c.json() for c in category.query.all()]) 

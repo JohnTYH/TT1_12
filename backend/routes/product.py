@@ -28,5 +28,4 @@ class product(db.Model):
 
 @app.route("/products")
 def get_all_products():
-    #check if its only called by matching service then can call this service
     return jsonify([c.json() for c in product.query.all()]) 
